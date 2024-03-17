@@ -1,7 +1,8 @@
 {
   "translation": {
-    "website_title": "Inflation Calculator",
+    "website_title": "Buying Power Calculator",
     "select_country_label": "Country & currency",
-    "country_cn": "China - RMB"
+    "country_chn": "China Mainland - RMB",
+    "from_input_placeholder": "input amount..."
   }
 }

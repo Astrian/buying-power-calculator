@@ -27,4 +27,20 @@
 
 .module {
   background-color: #f5f5f5;
+  padding: 20px;
+}
+
+.country-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .item {
+    display: flex;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
 }
