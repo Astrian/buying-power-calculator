@@ -35,7 +35,9 @@ function App() {
   }
 
   function calculatePurchasingPower(startYear: number = parseInt(fromYear), endYear: number = parseInt(toYear), amount: number = parseInt(fromAmount), inflationRates: any = (cpi as any)[currentCounty]) {
-    if (endYear <= startYear || !inflationRates[startYear] || !inflationRates[endYear]) {
+    if (!inflationRates[startYear] || !inflationRates[endYear]) {
+      throw new Error('Invalid input data')
+    } else if (endYear < startYear) {
       return calculatePurchasingPowerReversed(amount, endYear, startYear, inflationRates)
     } else if (endYear === startYear) {
       return amount
