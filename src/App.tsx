@@ -136,6 +136,8 @@ function App() {
 
   function dropdownHandler() {
     setDropdownActive(!dropdownActive)
+    setShowFromYearDropdown(false)
+    setShowToYearDropdown(false)
   }
 
   return (
@@ -175,7 +177,7 @@ function App() {
             <strong>{t('year_from_title')}</strong>
             <div className="selector">
               <span>{t('year')}</span>
-              <div className={cn('dropdown is-right', showFromYearDropdown && 'is-active')} onClick={() => {setShowFromYearDropdown(!showFromYearDropdown)}}>
+              <div className={cn('dropdown is-right', showFromYearDropdown && 'is-active')} onClick={() => {setShowFromYearDropdown(!showFromYearDropdown); setShowToYearDropdown(false); setDropdownActive(false)}}>
                 <div className="dropdown-trigger">
                   <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
                     <span>{fromYear}</span>
@@ -200,7 +202,7 @@ function App() {
             <strong>{t('year_to_title')}</strong>
             <div className="selector">
               <span>{t('year')}</span>
-              <div className={cn('dropdown is-right', showToYearDropdown && 'is-active')} onClick={() => {setShowToYearDropdown(!showToYearDropdown); calculatePurchasingPower() }}>
+              <div className={cn('dropdown is-right', showToYearDropdown && 'is-active')} onClick={() => {setShowToYearDropdown(!showToYearDropdown); setShowFromYearDropdown(false); setDropdownActive(false); calculatePurchasingPower() }}>
                 <div className="dropdown-trigger">
                   <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
                     <span>{toYear}</span>
