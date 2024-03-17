@@ -21,6 +21,9 @@ function App() {
   const [showToYearDropdown, setShowToYearDropdown] = useState(false)
   const [fromAmount, setFromAmount] = useState("1000")
   const [toAmount, setToAmount] = useState(calculatePurchasingPower())
+
+  // Change webpage title
+  document.title = t('website_title')
   
   function fromAmountChanges(value: string) {
     setFromAmount(value)
