@@ -1,5 +1,5 @@
 import { useTranslation, Trans } from "react-i18next"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import cn from 'classnames'
 import "bulma"
 import "./style.scss"
@@ -99,6 +99,22 @@ function App() {
     setShowToYearDropdown(false)
     setToAmount(calculatePurchasingPower(parseInt(fromYear), parseInt(year), parseFloat(fromAmount), (cpi as any)[currentCounty]))
   }
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const fromYearParam = urlParams.get('from')
+    const toYearParam = urlParams.get('to')
+    const amountParam = urlParams.get('amount')
+    console.log(amountParam)
+    const countryParam = urlParams.get('country')
+    if (fromYearParam && toYearParam && amountParam && countryParam) {
+      setCurrentCountry(countryParam)
+      setFromYear(fromYearParam)
+      setToYear(toYearParam)
+      setFromAmount(amountParam)
+      setToAmount(calculatePurchasingPower(parseInt(fromYearParam), parseInt(toYearParam), parseFloat(amountParam), (cpi as any)[countryParam]))
+    }
+  }, [])
   
   // Iterate through the country list and create a dropdown item for each
   const countryItems = Object.keys(cpi).map((country) => {
@@ -138,6 +154,14 @@ function App() {
     setDropdownActive(!dropdownActive)
     setShowFromYearDropdown(false)
     setShowToYearDropdown(false)
+  }
+
+  function share() {
+    // https://buyingpower.astrian.moe/?from={year}&to={year}&amount={amount}&country={country}
+    const url = `https://buyingpower.astrian.moe/?from=${fromYear}&to=${toYear}&amount=${fromAmount}&country=${currentCounty}`
+    // Copy the URL to the clipboard
+    navigator.clipboard.writeText(url)
+    alert(t('share_alert'))
   }
 
   return (
@@ -194,7 +218,7 @@ function App() {
               </div>
             </div>
           </div>
-          <input type="number" className="input" step="0.01" placeholder={t('from_input_placeholder')} defaultValue={fromAmount} onChange={e => {fromAmountChanges(e.target.value) }} />
+          <input type="number" className="input" step="0.01" placeholder={t('from_input_placeholder')} value={fromAmount} onChange={e => {fromAmountChanges(e.target.value) }} />
         </div>
         
         <div className="module to">
@@ -222,6 +246,11 @@ function App() {
           <div className="input">{toAmount}</div>
         </div>
       </div>
+
+      <div className="share">
+        <button className="button" onClick={share}>{t('share')}</button>
+      </div>
+      
 
       <div className="footer-part">
         <Trans i18nKey="footer">

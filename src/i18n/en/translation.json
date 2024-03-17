@@ -219,8 +219,10 @@
     "from_input_placeholder": "input amount...",
     "to_input_placeholder": "input amount...",
     "year_from_title": "Baseline buying power",
-    "year_to_title": "Transfered",
+    "year_to_title": "Converted",
     "footer": "<p><strong>References only, and use this tool for scholar purpose is not recommended</strong></p><p>This tool calculates the purchasing power of a given amount of money before and after two periods of time by using the annual CPI change rate.</p><p>Historical CPI rate data source: <0>World Bank</0></p><p>Crafted by <1>Astrian</1> with ❤️</p>",
-    "year": "Year"
+    "year": "Year",
+    "share": "Share this convert",
+    "share_alert": "The link to this convert has been copied."
   }
 }
