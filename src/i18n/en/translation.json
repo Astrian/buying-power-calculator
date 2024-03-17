@@ -219,6 +219,7 @@
     "from_input_placeholder": "input amount...",
     "to_input_placeholder": "input amount...",
     "year_from_title": "Baseline buying power",
-    "year_to_title": "Transfered"
+    "year_to_title": "Transfered",
+    "footer": "<p><strong>References only, and use this tool for scholar purpose is not recommended</strong></p><p>Source: <0>World Bank</0></p><p>Crafted by <1>Astrian</1> with ❤️</p>"
   }
 }

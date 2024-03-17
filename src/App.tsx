@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next"
+import { useTranslation, Trans } from "react-i18next"
 import { useState } from 'react'
 import cn from 'classnames'
 import "bulma"
@@ -206,6 +206,13 @@ function App() {
           </div>
           <div className="input">{toAmount}</div>
         </div>
+      </div>
+
+      <div className="footer-part">
+        <Trans i18nKey="footer">
+          <a href="https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG" target="_blank">World Bank</a>
+          <a href="https://astrian.moe" target="_blank">blog link</a>
+        </Trans>
       </div>
     </div>
     <div className={cn('modal', showAllCountries && 'is-active')}>
