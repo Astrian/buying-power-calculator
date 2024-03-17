@@ -1,34 +1,57 @@
+import { useTranslation } from "react-i18next"
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import cn from 'classnames'
+import "bulma"
+import "./style.scss"
+
+import Icon from '@mdi/react'
+import { mdiMenuDown, mdiCash } from '@mdi/js'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [dropdownActive, setDropdownActive] = useState(false)
+  const [countryList, _] = useState(["cn"])
+  const [currentCounty, setCurrentCountry] = useState("cn")
+
+  function dropdownHandler() {
+    setDropdownActive(!dropdownActive)
+  }
+
+  const { t } = useTranslation()
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container">
+      <div className="header">
+        <h1 className="title">{t('website_title')}</h1>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+      <div className="country-selector module">
+        <span className="icon-text">
+          <span className="icon"><Icon path={mdiCash} size={1} /></span> {t('select_country_label')}
+        </span>
+        <div className={cn('dropdown', dropdownActive && 'is-active')} onClick={dropdownHandler}>
+          <div className="dropdown-trigger">
+            <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
+              <span>{t(`country_${currentCounty}`)}</span>
+              <span className="icon is-small">
+                <Icon path={mdiMenuDown} size={1} />
+              </span>
+            </button>
+          </div>
+          <div className="dropdown-menu" id="dropdown-menu" role="menu">
+            <div className="dropdown-content">
+              <a className="dropdown-item">
+                Dropdown item
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      
+      <div className="calculator-body">
+        <div className="module from">from</div>
+        <div className="module to">to</div>
+      </div>
+    </div>
   )
 }
 
