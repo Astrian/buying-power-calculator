@@ -77,3 +77,8 @@
     }
   }
 }
+
+.dropdown-content {
+  max-height: 360px;
+  overflow: scroll;
+}

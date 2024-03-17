@@ -14,7 +14,7 @@ function App() {
   const [dropdownActive, setDropdownActive] = useState(false)
   const [currentCounty, setCurrentCountry] = useState("chn")
   const [showAllCountries, setShowAllCountries] = useState(false)
-  const frequentCountries = ["chn", "usa", "jpn", "kor", "sgp", "aus", "gbr", "can", "deu", "fra", "ita", "esp", "bra", "rus", "ind"]
+  const frequentCountries = ["chn", "usa", "jpn", "kor", "sgp", "aus", "gbr"]
   const [fromYear, setFromYear] = useState("1987")
   const [toYear, setToYear] = useState("2022")
   const [showFromYearDropdown, setShowFromYearDropdown] = useState(false)
@@ -119,7 +119,7 @@ function App() {
   // Iterate through the country list and create a dropdown item for each
   const countryItems = Object.keys(cpi).map((country) => {
     return (
-      <div key={country} className="item" onClick={() => { currentCountryProcessor(country) }}>
+      <div key={country} className="item" onClick={() => { currentCountryProcessor(country); setShowAllCountries(false) }}>
         {t(`country_${country}`)}
       </div>
     )
