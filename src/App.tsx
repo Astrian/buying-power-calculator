@@ -169,18 +169,21 @@ function App() {
         <div className="module from">
           <div className="year">
             <strong>{t('year_from_title')}</strong>
-            <div className={cn('dropdown is-right', showFromYearDropdown && 'is-active')} onClick={() => {setShowFromYearDropdown(!showFromYearDropdown)}}>
-              <div className="dropdown-trigger">
-                <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span>{fromYear}</span>
-                  <span className="icon is-small">
-                    <Icon path={mdiMenuDown} size={1} />
-                  </span>
-                </button>
-              </div>
-              <div className="dropdown-menu" id="dropdown-menu" role="menu">
-                <div className="dropdown-content">
-                  {yearsFromItems}
+            <div className="selector">
+              <span>{t('year')}</span>
+              <div className={cn('dropdown is-right', showFromYearDropdown && 'is-active')} onClick={() => {setShowFromYearDropdown(!showFromYearDropdown)}}>
+                <div className="dropdown-trigger">
+                  <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span>{fromYear}</span>
+                    <span className="icon is-small">
+                      <Icon path={mdiMenuDown} size={1} />
+                    </span>
+                  </button>
+                </div>
+                <div className="dropdown-menu" id="dropdown-menu" role="menu">
+                  <div className="dropdown-content">
+                    {yearsFromItems}
+                  </div>
                 </div>
               </div>
             </div>
@@ -191,18 +194,21 @@ function App() {
         <div className="module to">
           <div className="year">
             <strong>{t('year_to_title')}</strong>
-            <div className={cn('dropdown is-right', showToYearDropdown && 'is-active')} onClick={() => {setShowToYearDropdown(!showToYearDropdown); calculatePurchasingPower() }}>
-              <div className="dropdown-trigger">
-                <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span>{toYear}</span>
-                  <span className="icon is-small">
-                    <Icon path={mdiMenuDown} size={1} />
-                  </span>
-                </button>
-              </div>
-              <div className="dropdown-menu" id="dropdown-menu" role="menu">
-                <div className="dropdown-content">
-                  {yearsToItems}
+            <div className="selector">
+              <span>{t('year')}</span>
+              <div className={cn('dropdown is-right', showToYearDropdown && 'is-active')} onClick={() => {setShowToYearDropdown(!showToYearDropdown); calculatePurchasingPower() }}>
+                <div className="dropdown-trigger">
+                  <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span>{toYear}</span>
+                    <span className="icon is-small">
+                      <Icon path={mdiMenuDown} size={1} />
+                    </span>
+                  </button>
+                </div>
+                <div className="dropdown-menu" id="dropdown-menu" role="menu">
+                  <div className="dropdown-content">
+                    {yearsToItems}
+                  </div>
                 </div>
               </div>
             </div>

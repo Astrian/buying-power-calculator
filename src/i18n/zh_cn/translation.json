@@ -222,6 +222,7 @@
     "to_input_placeholder": "输入金额...",
     "year_from_title": "基准购买力",
     "year_to_title": "转换后",
-    "footer": "<p><strong>转换数据仅供参考，不建议作为严谨的学术引用</strong></p><p>数据来源：<0>世界银行</0></p><p>由 <1>Astrian</1> 用 ❤️ 制作</p>"
+    "footer": "<p><strong>转换数据仅供参考，不建议作为严谨的学术引用</strong></p><p>数据来源：<0>世界银行</0></p><p>由 <1>Astrian</1> 用 ❤️ 制作</p>",
+    "year": "年份"
   }
 }
