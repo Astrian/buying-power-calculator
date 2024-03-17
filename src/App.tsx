@@ -78,7 +78,7 @@ function App() {
     setToYear(years[years.length - 1])
 
     // Recalculate the purchasing power
-    setToAmount(calculatePurchasingPower(parseInt(fromYear), parseInt(toYear), parseFloat(fromAmount), (cpi as any)[country]))
+    setToAmount(calculatePurchasingPower(parseInt(years[0]), parseInt(years[years.length - 1]), parseFloat(fromAmount), (cpi as any)[country]))
   }
 
   function changeFromYear(year: string) {
@@ -96,7 +96,7 @@ function App() {
   // Iterate through the country list and create a dropdown item for each
   const countryItems = Object.keys(cpi).map((country) => {
     return (
-      <div key={country} className="item" onClick={() => { setCurrentCountry(country); setShowAllCountries(false); currentCountryProcessor(country); }}>
+      <div key={country} className="item" onClick={() => { currentCountryProcessor(country) }}>
         {t(`country_${country}`)}
       </div>
     )
@@ -104,7 +104,7 @@ function App() {
 
   const frequentCountriesItems = frequentCountries.map((country) => {
     return (
-      <a key={country} href="#" className="dropdown-item" onClick={() => { setCurrentCountry(country); currentCountryProcessor(country); }}>
+      <a key={country} href="#" className="dropdown-item" onClick={() => { currentCountryProcessor(country) }}>
         {t(`country_${country}`)}
       </a>
     )
