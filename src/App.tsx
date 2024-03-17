@@ -171,7 +171,7 @@ function App() {
         <h1 className="title">{t('website_title')}</h1>
         <div className="country-selector">
           <span className="icon-text">
-            <span className="icon"><Icon path={mdiCash} size={1} /></span> {t('select_country_label')}
+            <span className="icon"><Icon path={mdiCash} size={1} /></span> <span className="region-label">{t('select_country_label')}</span>
           </span>
           <div className={cn('dropdown is-right', dropdownActive && 'is-active')} onClick={dropdownHandler}>
             <div className="dropdown-trigger">
