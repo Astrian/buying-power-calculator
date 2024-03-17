@@ -36,7 +36,9 @@ function App() {
 
   function calculatePurchasingPower(startYear: number = parseInt(fromYear), endYear: number = parseInt(toYear), amount: number = parseInt(fromAmount), inflationRates: any = (cpi as any)[currentCounty]) {
     if (endYear <= startYear || !inflationRates[startYear] || !inflationRates[endYear]) {
-      return calculatePurchasingPowerReversed(amount, startYear, endYear, inflationRates)
+      return calculatePurchasingPowerReversed(amount, endYear, startYear, inflationRates)
+    } else if (endYear === startYear) {
+      return amount
     }
   
     let cumulativeInflationFactor = 1;
