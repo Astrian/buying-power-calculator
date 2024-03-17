@@ -218,7 +218,7 @@
     "country_zwe": "Zimbabwe - Zimbabwean dollar",
     "from_input_placeholder": "input amount...",
     "to_input_placeholder": "input amount...",
-    "year_from_title": "Start from",
-    "year_to_title": "To"
+    "year_from_title": "Baseline buying power",
+    "year_to_title": "Transfered"
   }
 }

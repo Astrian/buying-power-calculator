@@ -220,7 +220,7 @@
     "show_all_countries": "所有国家或地区",
     "from_input_placeholder": "输入金额...",
     "to_input_placeholder": "输入金额...",
-    "year_from_title": "起始",
-    "year_to_title": "直到"
+    "year_from_title": "基准购买力",
+    "year_to_title": "转换后"
   }
 }

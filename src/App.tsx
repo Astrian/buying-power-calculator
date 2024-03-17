@@ -19,6 +19,52 @@ function App() {
   const [toYear, setToYear] = useState("2022")
   const [showFromYearDropdown, setShowFromYearDropdown] = useState(false)
   const [showToYearDropdown, setShowToYearDropdown] = useState(false)
+  const [fromAmount, setFromAmount] = useState("1000")
+  const [toAmount, setToAmount] = useState(calculatePurchasingPower())
+  
+  function fromAmountChanges(value: string) {
+    setFromAmount(value)
+    if (value !== "") {
+      setToAmount(calculatePurchasingPower(parseInt(fromYear), parseInt(toYear), parseFloat(value), (cpi as any)[currentCounty]))
+    } else {
+      setToAmount(0)
+    }
+  }
+
+  function calculatePurchasingPower(startYear: number = parseInt(fromYear), endYear: number = parseInt(toYear), amount: number = parseInt(fromAmount), inflationRates: any = (cpi as any)[currentCounty]) {
+    if (endYear <= startYear || !inflationRates[startYear] || !inflationRates[endYear]) {
+      return calculatePurchasingPowerReversed(amount, startYear, endYear, inflationRates)
+    }
+  
+    let cumulativeInflationFactor = 1;
+  
+    for (let year = startYear; year < endYear; year++) {
+      const inflationRate = inflationRates[year]
+      const inflationFactor = 1 + inflationRate / 100
+      cumulativeInflationFactor *= inflationFactor
+    }
+  
+    const equivalentAmount = amount * cumulativeInflationFactor
+    // 取两位小数
+    return equivalentAmount.toFixed(2)
+  }
+
+  function calculatePurchasingPowerReversed(amount: number, startYear: number, endYear: number, inflationRates: any) {
+    if (endYear <= startYear || !inflationRates[startYear] || !inflationRates[endYear]) {
+      throw new Error('Invalid input data');
+    }
+  
+    let cumulativeInflationFactor = 1;
+  
+    for (let year = startYear; year < endYear; year++) {
+      const inflationRate = inflationRates[year];
+      const inflationFactor = 1 + inflationRate / 100;
+      cumulativeInflationFactor *= inflationFactor;
+    }
+  
+    const equivalentAmount = amount / cumulativeInflationFactor;
+    return equivalentAmount;
+  }
 
   function currentCountryProcessor(country: string) {
     // Change the current country to the selected country
@@ -30,12 +76,27 @@ function App() {
 
     // Set the last year of the selected country as the default to year
     setToYear(years[years.length - 1])
+
+    // Recalculate the purchasing power
+    setToAmount(calculatePurchasingPower(parseInt(fromYear), parseInt(toYear), parseFloat(fromAmount), (cpi as any)[country]))
+  }
+
+  function changeFromYear(year: string) {
+    setFromYear(year)
+    setShowFromYearDropdown(false)
+    setToAmount(calculatePurchasingPower(parseInt(year), parseInt(toYear), parseFloat(fromAmount), (cpi as any)[currentCounty]))
+  }
+
+  function changeToYear(year: string) {
+    setToYear(year)
+    setShowToYearDropdown(false)
+    setToAmount(calculatePurchasingPower(parseInt(fromYear), parseInt(year), parseFloat(fromAmount), (cpi as any)[currentCounty]))
   }
   
   // Iterate through the country list and create a dropdown item for each
   const countryItems = Object.keys(cpi).map((country) => {
     return (
-      <div className="item" onClick={() => { setCurrentCountry(country); setShowAllCountries(false); }}>
+      <div key={country} className="item" onClick={() => { setCurrentCountry(country); setShowAllCountries(false); currentCountryProcessor(country); }}>
         {t(`country_${country}`)}
       </div>
     )
@@ -43,7 +104,7 @@ function App() {
 
   const frequentCountriesItems = frequentCountries.map((country) => {
     return (
-      <a key={country} href="#" className="dropdown-item" onClick={() => setCurrentCountry(country)}>
+      <a key={country} href="#" className="dropdown-item" onClick={() => { setCurrentCountry(country); currentCountryProcessor(country); }}>
         {t(`country_${country}`)}
       </a>
     )
@@ -52,17 +113,15 @@ function App() {
   // Iterate the years for the selected country and create a dropdown item for each
   const years = Object.keys((cpi as any)[currentCounty])
   const yearsFromItems = years.map((year) => {
-    if (year >= toYear) return null
     return (
-      <a key={year} href="#" className="dropdown-item" onClick={() => setFromYear(year)}>
+      <a key={year} href="#" className="dropdown-item" onClick={() => { changeFromYear(year) }}>
         {t(`${year}`)}
       </a>
     )
   })
   const yearsToItems = years.map((year) => {
-    if (year <= fromYear) return null
     return (
-      <a key={year} href="#" className="dropdown-item" onClick={() => setToYear(year)}>
+      <a key={year} href="#" className="dropdown-item" onClick={() => { changeToYear(year) }}>
         {t(`${year}`)}
       </a>
     )
@@ -107,7 +166,7 @@ function App() {
         <div className="module from">
           <div className="year">
             <strong>{t('year_from_title')}</strong>
-            <div className={cn('dropdown is-right', showFromYearDropdown && 'is-active')} onClick={() => setShowFromYearDropdown(!showFromYearDropdown)}>
+            <div className={cn('dropdown is-right', showFromYearDropdown && 'is-active')} onClick={() => {setShowFromYearDropdown(!showFromYearDropdown)}}>
               <div className="dropdown-trigger">
                 <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
                   <span>{fromYear}</span>
@@ -123,13 +182,13 @@ function App() {
               </div>
             </div>
           </div>
-          <input type="number" className="input" placeholder={t('from_input_placeholder')} />
+          <input type="number" className="input" step="0.01" placeholder={t('from_input_placeholder')} defaultValue={fromAmount} onChange={e => {fromAmountChanges(e.target.value) }} />
         </div>
         
         <div className="module to">
           <div className="year">
             <strong>{t('year_to_title')}</strong>
-            <div className={cn('dropdown is-right', showToYearDropdown && 'is-active')} onClick={() => setShowToYearDropdown(!showToYearDropdown)}>
+            <div className={cn('dropdown is-right', showToYearDropdown && 'is-active')} onClick={() => {setShowToYearDropdown(!showToYearDropdown); calculatePurchasingPower() }}>
               <div className="dropdown-trigger">
                 <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
                   <span>{toYear}</span>
@@ -145,7 +204,7 @@ function App() {
               </div>
             </div>
           </div>
-          <input type="number" className="input" placeholder={t('to_input_placeholder')} />
+          <div className="input">{toAmount}</div>
         </div>
       </div>
     </div>
