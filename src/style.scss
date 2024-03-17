@@ -25,6 +25,14 @@
       .input {
         font-size: 30px;
       }
+      div.input {
+        display: flex;
+        justify-content: space-between;
+        .readonly-tag {
+          font-size: 14px;
+          color: #7d7d7d;
+        }
+      }
       .year {
         display: flex;
         justify-content: space-between;

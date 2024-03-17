@@ -243,7 +243,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div className="input">{toAmount}</div>
+          <div className="input"><span>{toAmount}</span><span className="readonly-tag">{t('readonly')}</span></div>
         </div>
       </div>
 

@@ -223,6 +223,7 @@
     "footer": "<p><strong>References only, and use this tool for scholar purpose is not recommended</strong></p><p>This tool calculates the purchasing power of specific amounts of currency for two specific time periods, based on historical annual inflation rates recorded with CPI.</p><p>Historical CPI rate data source: <0>World Bank</0></p><p>Crafted by <1>Astrian</1> with ❤️</p>",
     "year": "Year",
     "share": "Share this convert",
-    "share_alert": "The link to this convert has been copied."
+    "share_alert": "The link to this convert has been copied.",
+    "readonly": "Display only"
   }
 }
