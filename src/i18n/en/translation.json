@@ -217,6 +217,8 @@
     "country_zmb": "Zambia - Zambian kwacha",
     "country_zwe": "Zimbabwe - Zimbabwean dollar",
     "from_input_placeholder": "input amount...",
-    "to_input_placeholder": "input amount..."
+    "to_input_placeholder": "input amount...",
+    "year_from_title": "Start from",
+    "year_to_title": "To"
   }
 }

@@ -218,6 +218,9 @@
     "country_zmb": "赞比亚 - 赞比亚克瓦查",
     "country_zwe": "津巴布韦 - 津巴布韦元",
     "show_all_countries": "所有国家或地区",
-    "from_input_placeholder": "输入金额..."
+    "from_input_placeholder": "输入金额...",
+    "to_input_placeholder": "输入金额...",
+    "year_from_title": "起始",
+    "year_to_title": "直到"
   }
 }
