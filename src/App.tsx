@@ -38,7 +38,7 @@ function App() {
     if (!inflationRates[startYear] || !inflationRates[endYear]) {
       throw new Error('Invalid input data')
     } else if (endYear < startYear) {
-      return calculatePurchasingPowerReversed(amount, endYear, startYear, inflationRates)
+      return calculatePurchasingPowerReversed(amount, endYear, startYear, inflationRates).toFixed(2)
     } else if (endYear === startYear) {
       return amount
     }
