@@ -115,7 +115,7 @@ function Inflation () {
   const countryItems = Object.keys(cpi).map((country) => {
     return (
       <div key={country} className="item" onClick={() => { currentCountryProcessor(country); setShowAllCountries(false) }}>
-        {t(`country_${country}`)}
+        {t(`country_${country}`)} - {t(`currency_${country}`)}
       </div>
     )
   })
@@ -123,7 +123,7 @@ function Inflation () {
   const frequentCountriesItems = frequentCountries.map((country) => {
     return (
       <a key={country} href="#" className="dropdown-item" onClick={() => { currentCountryProcessor(country) }}>
-        {t(`country_${country}`)}
+        {t(`country_${country}`)} - {t(`currency_${country}`)}
       </a>
     )
   })
@@ -177,7 +177,7 @@ function Inflation () {
             <div className={cn('dropdown is-right', dropdownActive && 'is-active')} onClick={dropdownHandler}>
               <div className="dropdown-trigger">
                 <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span>{t(`country_${currentCounty}`)}</span>
+                  <span>{t(`country_${currentCounty}`)} - {t(`currency_${currentCounty}`)}</span>
                   <span className="icon is-small">
                     <Icon path={mdiMenuDown} size={1} />
                   </span>
@@ -193,7 +193,7 @@ function Inflation () {
                 </div>
               </div>
             </div>
-          </div>
+        </div>
         <div className="calculator-body">
           <div className="module from">
             <div className="year">
