@@ -225,6 +225,8 @@
     "share": "Share this convert",
     "share_alert": "The link to this convert has been copied.",
     "readonly": "Display only",
-    "show_all_countries": "All countries & regions"
+    "show_all_countries": "All countries & regions",
+    "feature_time": "Time",
+    "feature_country": "Country"
   }
 }

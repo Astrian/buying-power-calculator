@@ -226,6 +226,8 @@
     "year": "年份",
     "share": "分享此转换",
     "copy_alert": "已将本次转换结果地址复制至剪贴板。",
-    "readonly": "仅展示"
+    "readonly": "仅展示",
+    "feature_time": "时间",
+    "feature_country": "国家"
   }
 }
