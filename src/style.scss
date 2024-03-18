@@ -48,10 +48,14 @@
       div.input {
         display: flex;
         justify-content: space-between;
+        span {
+          font-family: "din-2014", sans-serif;
+        }
         
         .readonly-tag {
           font-size: 14px;
           color: #7d7d7d;
+          font-family: "runda", "source-han-sans-cjk-sc", sans-serif;
         }
       }
       .year {
