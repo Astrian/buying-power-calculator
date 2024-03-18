@@ -145,7 +145,7 @@ a {
 }
 
 /* Dark scheme */
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   a {
     --tw-shadow: inset 0 -.4em 0 0 #3f4d54;
   }
