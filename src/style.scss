@@ -122,6 +122,9 @@ a {
 .dropdown-content {
   max-height: 360px;
   overflow: scroll;
+  a {
+    --tw-shadow: none;
+  }
 }
 
 /* phone layout */
