@@ -87,16 +87,9 @@ a {
     .header {
       flex-direction: column;
       gap: 10px;
-      .region-label {
-        display: none;
-      }
+      
     }
-    .calculator-body {
-      flex-direction: column;
-      .module {
-        width: 100%;
-      }
-    }
+    
   }
 }
 
