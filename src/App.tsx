@@ -156,12 +156,20 @@ function App() {
     setShowToYearDropdown(false)
   }
 
-  function share() {
+  async function share() {
     // https://buyingpower.astrian.moe/?from={year}&to={year}&amount={amount}&country={country}
     const url = `https://buyingpower.astrian.moe/?from=${fromYear}&to=${toYear}&amount=${fromAmount}&country=${currentCounty}`
-    // Copy the URL to the clipboard
-    navigator.clipboard.writeText(url)
-    alert(t('share_alert'))
+    // Use system share sheet
+    if (navigator.share) {
+      await navigator.share({
+        title: t('website_title'),
+        url: url
+      })
+    } else {
+      // Fallback to copy the URL to the clipboard
+      navigator.clipboard.writeText(`${t('share_text')}\n${url}`)
+      alert(t('copy_alert'))
+    }
   }
 
   return (
