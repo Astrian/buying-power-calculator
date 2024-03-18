@@ -122,8 +122,12 @@ a {
 .dropdown-content {
   max-height: 360px;
   overflow: scroll;
-  a {
+  a.dropdown-item {
     --tw-shadow: none;
+  }
+  a.dropdown-item:hover {
+    background-color: #ffffff1f;
+    color: #f5f5f5;
   }
 }
 
