@@ -2,6 +2,13 @@
   font-family: "runda", "source-han-sans-cjk-sc", sans-serif;
 }
 
+a {
+  color: hsl(0, 0%, 29);
+  --tw-shadow: inset 0 -.4em 0 0 #aed2e4;
+  --tw-shadow-colored: inset 0 -.1em 0 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -138,7 +145,10 @@
 }
 
 /* Dark scheme */
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
+  a {
+    --tw-shadow: inset 0 -.4em 0 0 #3f4d54;
+  }
   html {
     background-color: #121212;
     .container {
