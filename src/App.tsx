@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 function App() {
   const { t } = useTranslation()
-  const [feature, setFeature] = useState('time')
+  const [feature, setFeature] = useState('country')
 
   // Change webpage title
   document.title = t('website_title')

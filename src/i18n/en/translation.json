@@ -225,7 +225,7 @@
     "share": "Share this convert",
     "share_alert": "The link to this convert has been copied.",
     "readonly": "Display only",
-    "show_all_countries": "All countries & regions",
+    "show_all_countries": "Show all countries & regions",
     "feature_time": "Time",
     "feature_country": "Country",
     "select_year_label": "Year",
@@ -442,6 +442,8 @@
     "currency_yem": "Yemeni rial",
     "currency_zaf": "South African rand",
     "currency_zmb": "Zambian kwacha",
-    "currency_zwe": "Zimbabwean dollar"
+    "currency_zwe": "Zimbabwean dollar",
+    "table_country_name": "Country & Region",
+    "buyingpower_in_usd": "Buying Power (count in USD)"
   }
 }

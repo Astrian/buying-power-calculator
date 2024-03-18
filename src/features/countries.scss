@@ -1,3 +1,26 @@
 .feature-body {
-  
+  .pref {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+    .checkbox {
+      display: flex;
+      gap: 5px;
+    }
+  }
+
+  .maincontent {
+    display: flex;
+    justify-content: center;
+    table {
+      .country_name{
+        padding-top: 15px;
+      }
+      .is-active {
+        font-weight: bold;
+      }
+    }
+  }
 }

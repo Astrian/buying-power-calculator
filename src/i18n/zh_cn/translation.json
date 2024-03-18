@@ -217,7 +217,7 @@
     "country_zaf": "南非",
     "country_zmb": "赞比亚",
     "country_zwe": "津巴布韦",
-    "show_all_countries": "所有国家或地区",
+    "show_all_countries": "显示所有国家或地区",
     "from_input_placeholder": "输入金额...",
     "to_input_placeholder": "输入金额...",
     "year_from_title": "基准购买力",
@@ -440,6 +440,8 @@
     "currency_yem": "也门里亚尔",
     "currency_zaf": "南非兰特",
     "currency_zmb": "赞比亚克瓦查",
-    "currency_zwe": "津巴布韦元"
+    "currency_zwe": "津巴布韦元",
+    "table_country_name": "国家或地区",
+    "buyingpower_in_usd": "等值购买力（以美金计）"
   }
 }
