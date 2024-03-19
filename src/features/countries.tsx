@@ -9,55 +9,45 @@ import ppp from "../ppp.json"
 export default function Countries() {
   const { t } = useTranslation()
   const [showYearDropdown, setShowYearDropdown] = useState(false)
-  const [selectedYear, setSelectedYear] = useState("2020")
+  const [selectedYear, setSelectedYear] = useState("2022")
   const [showAllCountries, setShowAllCountries] = useState(false)
   const frequentCountries = ["chn", "usa", "jpn", "kor", "sgp", "aus", "gbr"]
-  const [pppFactor, setPppFactor] = useState({} as { [key: string]: number })
-  const [amount, setAmount] = useState(1)
+  const [amount, setAmount] = useState("1")
   const [selectedCountry, setSelectedCountry] = useState("usa")
   const [everyCountriesAmount, setEveryCountriesAmount] = useState({} as { [key: string]: number })
   const [showCountryDropdown, setShowCountryDropdown] = useState(false)
 
-  const changeValue = (country: string, value: number, year: string = selectedYear) => {
-    if (isNaN(value)) {
-      value = 0
-    }
-    setSelectedCountry(country)
-    setAmount(value)
-    console.log(value)
-
-    if (year !== selectedYear) {
-      console.log("year changed", year)
-      setSelectedYear(year)
-    }
-    
-    // Calculate the amount in USA
-    const purchasingPowerMap = calculatePurchasingPowerOfUSD((ppp as any)[year])
-    setPppFactor(purchasingPowerMap)
-    const purchasingPower = purchasingPowerMap[country]
-    const amountInUSD = value / purchasingPower
-
-    // Calculate the amount in every country
-    const everyCountriesAmountMap: {[key: string]: number} = {}
-    
-    for (const country in pppFactor) {
-      const pppToMarketRatio = pppFactor[country]
-      const amountInCountry = amountInUSD * pppToMarketRatio
-      everyCountriesAmountMap[country] = amountInCountry
-    }
-    setEveryCountriesAmount(everyCountriesAmountMap)
-  }
-
   function changeYear(year: string) {
     setSelectedYear(year)
     setShowYearDropdown(false)
-    changeValue("usa", 1, year)
+    setAmount("1")
   }
 
+  // setAmount(1)
+
   useEffect(() => {
-    const year = extraceAvailableYears()[extraceAvailableYears().length - 1]
-    changeYear(year)
-  }, [selectedYear])
+    if (amount !== "") {
+      let amountInFloat = parseFloat(amount)
+      // Get the purchasing power of USD
+      const purchasingPowerOfUSD = calculatePurchasingPowerOfUSD((ppp as any)[selectedYear])
+      // Calculate the purchasing power of the input amount in USA
+      if (amountInFloat === 0.0) {
+        amountInFloat = 1
+        setAmount("1.00")
+      }
+      const amountInUSA = amountInFloat / purchasingPowerOfUSD[selectedCountry.toLowerCase()]
+      // Calculate the purchasing power of the input amount in every country
+      const everyCountriesAmount: {[key: string]: number} = {}
+      for (const country in purchasingPowerOfUSD) {
+        everyCountriesAmount[country] = amountInUSA * purchasingPowerOfUSD[country]
+      }
+      setEveryCountriesAmount(everyCountriesAmount)
+    }
+  }, [amount])
+
+  useEffect(() => {
+    setAmount((everyCountriesAmount[selectedCountry.toLowerCase()] || 0).toFixed(2))
+  }, [selectedCountry])
 
   function extraceAvailableYears() {
     let result = []
@@ -86,8 +76,6 @@ export default function Countries() {
     return purchasingPowerMap
   }
 
-  
-
   const availableCountries = Object.keys((ppp as any)[selectedYear])
   const availableCountriesItems = availableCountries.map((country) => {
     if (!showAllCountries) {
@@ -115,7 +103,7 @@ export default function Countries() {
       for (let i in frequentCountries) {
         if (frequentCountries[i].toLowerCase() === country.toLowerCase()) {
           return (
-            <a href="#" className="dropdown-item" key={country} onClick={() => changeValue(country.toLowerCase(), 1)}>
+            <a href="#" className="dropdown-item" key={country} onClick={() => setSelectedCountry(country.toLowerCase())}>
               {t(`country_${country.toLowerCase()}`)}
             </a>
           )
@@ -123,7 +111,7 @@ export default function Countries() {
       }
     } else {
       return (
-        <a href="#" className="dropdown-item" key={country} onClick={() => changeValue(country.toLowerCase(), 1)}>
+        <a href="#" className="dropdown-item" key={country} onClick={() => setSelectedCountry(country.toLowerCase())}>
           {t(`country_${country.toLowerCase()}`)}
         </a>
       )
@@ -138,7 +126,6 @@ export default function Countries() {
             <span className="icon">
               <Icon path={mdiCalendarClock} size={1} />
             </span>
-            <span className="region-label">{t("select_year_label")}</span>
           </span>
           <div className={cn("dropdown is-right", showYearDropdown && "is-active")} onClick={() => setShowYearDropdown(!showYearDropdown)}>
             <div className="dropdown-trigger">
@@ -170,7 +157,7 @@ export default function Countries() {
             <Icon path={mdiCashEdit} size={1} />
           </span>
           
-          <div className={cn("dropdown is-right", showCountryDropdown && "is-active")} onClick={() => setShowCountryDropdown(!showCountryDropdown)}>
+          <div className={cn("dropdown", showCountryDropdown && "is-active")} onClick={() => setShowCountryDropdown(!showCountryDropdown)}>
             <div className="dropdown-trigger">
               <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
                 <span>
@@ -188,7 +175,7 @@ export default function Countries() {
             </div>
           </div>
 
-          <input className="input" type="number" step="0.01" value={amount} onChange={e => changeValue(selectedCountry.toLowerCase(), parseFloat(e.target.value))} />
+          <input placeholder={t('amount_placeholder')} className="input" type="number" step="0.01" value={amount} onChange={e => setAmount(e.target.value)} />
         </div>
       </div>
 

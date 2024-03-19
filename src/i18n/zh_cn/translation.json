@@ -222,7 +222,7 @@
     "to_input_placeholder": "输入金额...",
     "year_from_title": "基准购买力",
     "year_to_title": "转换后",
-    "footer": "<p><strong>转换数据仅供参考，不建议作为严谨的学术引用</strong></p><p>本工具通过历史以 CPI 记的年度通货膨胀率，计算两个时间段前后特定金额的货币购买力。</p><p>历年 CPI 变化率数据来源：<0>世界银行</0></p><p>由 <1>Astrian</1> 用 ❤️ 制作</p>",
+    "footer": "<p><strong>转换数据仅供参考，不建议作为严谨的学术引用</strong></p><p>本工具通过历史以 CPI 记的年度通货膨胀率与不同国家或地区以 GDP 加权的 PPP 数据，计算不同时间或不同国家或地区的购买力水平。</p><p>数据来源：<0>世界银行</0></p><p>由 <1>Astrian</1> 用 ❤️ 制作</p>",
     "year": "年份",
     "share": "分享此转换",
     "copy_alert": "已将本次转换结果地址复制至剪贴板。",
@@ -443,6 +443,7 @@
     "currency_zwe": "津巴布韦元",
     "table_country_name": "国家或地区",
     "buyingpower_in_usd": "等值购买力",
-    "base_buyingpower": "基准"
+    "base_buyingpower": "基准",
+    "amount_placeholder": "单位货币..."
   }
 }

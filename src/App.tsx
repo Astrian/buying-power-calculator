@@ -30,7 +30,7 @@ function App() {
     
       <div className="footer-part">
         <Trans i18nKey="footer">
-          <a className="styled" href="https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG" target="_blank">World Bank</a>
+          <a className="styled" href="https://data.worldbank.org/" target="_blank">World Bank</a>
           <a className="styled" href="https://astrian.moe" target="_blank">blog link</a>
         </Trans>
       </div>
