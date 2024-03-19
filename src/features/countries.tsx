@@ -25,16 +25,12 @@ export default function Countries() {
 
   // setAmount(1)
 
-  useEffect(() => {
+  function recalculateAmount() {
     if (amount !== "") {
       let amountInFloat = parseFloat(amount)
       // Get the purchasing power of USD
       const purchasingPowerOfUSD = calculatePurchasingPowerOfUSD((ppp as any)[selectedYear])
       // Calculate the purchasing power of the input amount in USA
-      if (amountInFloat === 0.0) {
-        amountInFloat = 1
-        setAmount("1.00")
-      }
       const amountInUSA = amountInFloat / purchasingPowerOfUSD[selectedCountry.toLowerCase()]
       // Calculate the purchasing power of the input amount in every country
       const everyCountriesAmount: {[key: string]: number} = {}
@@ -42,8 +38,14 @@ export default function Countries() {
         everyCountriesAmount[country] = amountInUSA * purchasingPowerOfUSD[country]
       }
       setEveryCountriesAmount(everyCountriesAmount)
+    } else {
+      setEveryCountriesAmount({})
     }
-  }, [amount])
+  }
+
+  useEffect(() => {
+    recalculateAmount()
+  }, [amount, selectedYear])
 
   useEffect(() => {
     setAmount((everyCountriesAmount[selectedCountry.toLowerCase()] || 0).toFixed(2))
@@ -127,7 +129,7 @@ export default function Countries() {
               <Icon path={mdiCalendarClock} size={1} />
             </span>
           </span>
-          <div className={cn("dropdown is-right", showYearDropdown && "is-active")} onClick={() => setShowYearDropdown(!showYearDropdown)}>
+          <div className={cn("dropdown", showYearDropdown && "is-active")} onClick={() => setShowYearDropdown(!showYearDropdown)}>
             <div className="dropdown-trigger">
               <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
                 <span>{selectedYear}</span>
