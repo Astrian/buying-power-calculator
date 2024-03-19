@@ -87,7 +87,7 @@ a.styled {
 }
 
 /* Dark scheme */
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
 
   a.dropdown-item:hover {
     background-color: #ffffff1f;
