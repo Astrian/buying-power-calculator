@@ -2,9 +2,9 @@
   font-family: "runda", "source-han-sans-cjk-sc", sans-serif;
 }
 
-a {
+a.styled {
   color: hsl(0, 0%, 29%);
-  --tw-shadow: inset 0 -.4em 0 0 #aed2e4;
+  --tw-shadow: inset 0 -.4em 0 0 #95cce8;
   --tw-shadow-colored: inset 0 -.1em 0 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
@@ -31,9 +31,8 @@ a {
     margin-bottom: 30px;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
   }
-
-  
 
   .footer-part {
     display: flex;
@@ -43,6 +42,7 @@ a {
     gap: 14px;
     margin-top: 40px;
     text-align: center;
+    margin-bottom: 20px;
   }
 }
 
@@ -62,9 +62,6 @@ a {
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    &:hover {
-      background-color: #e0e0e0;
-    }
   }
 }
 
@@ -73,10 +70,6 @@ a {
   overflow: scroll;
   a.dropdown-item {
     --tw-shadow: none;
-  }
-  a.dropdown-item:hover {
-    background-color: #ffffff1f;
-    color: #f5f5f5;
   }
 }
 
@@ -87,23 +80,52 @@ a {
     .header {
       flex-direction: column;
       gap: 10px;
-      .region-label {
-        display: none;
-      }
+      
     }
-    .calculator-body {
-      flex-direction: column;
-      .module {
-        width: 100%;
-      }
-    }
+    
   }
 }
 
 /* Dark scheme */
 @media (prefers-color-scheme: dark) {
-  a {
+
+  a.dropdown-item:hover {
+    background-color: #ffffff1f;
+    color: #f5f5f5;
+  }
+
+  table.table {
+    background-color: transparent;
+    thead, tbody {
+      tr {
+        th, td {
+          color: #f5f5f5;
+          border-bottom: 1px solid #f5f5f5;
+        }
+      }
+    }
+    
+    
+  }
+  
+  a.styled {
     --tw-shadow: inset 0 -.4em 0 0 #3f4d54;
+  }
+  .tabs {
+    ul {
+      li {
+        a:hover {
+          color: #f5f5f5;
+          border-bottom: 1px solid #f5f5f5;
+        }
+      }
+      li.is-active{
+        a:hover {
+          color: hsl(229, 53%, 53%);
+          border-bottom: 1px solid hsl(229, 53%, 53%);
+        }
+      }
+    }
   }
   html {
     background-color: #121212;
