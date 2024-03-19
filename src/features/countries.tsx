@@ -31,6 +31,10 @@ export default function Countries() {
       // Get the purchasing power of USD
       const purchasingPowerOfUSD = calculatePurchasingPowerOfUSD((ppp as any)[selectedYear])
       // Calculate the purchasing power of the input amount in USA
+      if (amountInFloat === 0.0) {
+        amountInFloat = 1
+        setAmount("1.00")
+      }
       const amountInUSA = amountInFloat / purchasingPowerOfUSD[selectedCountry.toLowerCase()]
       // Calculate the purchasing power of the input amount in every country
       const everyCountriesAmount: {[key: string]: number} = {}
