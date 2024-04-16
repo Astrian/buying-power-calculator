@@ -4,7 +4,6 @@ import cpi from "../cpi.json";
 import Icon from "@mdi/react";
 import { mdiMenuDown, mdiCash } from "@mdi/js";
 import cn from "classnames";
-import "./inflation.scss";
 
 function Inflation() {
   const { t } = useTranslation();

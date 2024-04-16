@@ -1,8 +1,7 @@
 import { useTranslation, Trans } from "react-i18next"
-import "bulma"
 import Inflation from "./features/inflation"
 import Countries from "./features/countries"
-import "./style.scss"
+import "./complied.css"
 import { useState } from 'react'
 
 function App() {
@@ -14,15 +13,13 @@ function App() {
   
   return (
     <>
-    <div className="container">
-      <div className="header">
-        <h1 className="title">{t('website_title')}</h1>
-        <div className="tabs">
-          <ul>
-            <li className={feature === 'time' ? 'is-active' : ''} onClick={() => setFeature('time')}><a>{t('feature_time')}</a></li>
-            <li className={feature === 'country' ? 'is-active' : ''} onClick={() => setFeature('country')}><a>{t('feature_country')}</a></li>
-          </ul>
-        </div>
+    <div className="container mx-auto px-[16px]">
+      <div className="flex justify-between mt-6">
+        <h1 className="text-3xl font-bold">{t('website_title')}</h1>
+        <ul className="tab">
+          <li className={feature === 'time' ? 'is-active' : ''} onClick={() => setFeature('time')}><a>{t('feature_time')}</a></li>
+          <li className={feature === 'country' ? 'is-active' : ''} onClick={() => setFeature('country')}><a>{t('feature_country')}</a></li>
+        </ul>
       </div>
       
       {feature === 'time' && <Inflation />}
