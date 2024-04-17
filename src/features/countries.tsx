@@ -141,7 +141,7 @@ export default function Countries() {
                 </span>
               </button>
             </div>
-            <div className="dropdown-menu" role="menu">
+            <div className="dropdown-menu left-0 right-auto md:left-auto md:right-0" role="menu">
               <div className="dropdown-content">
                 {availableYearsItems}
               </div>
@@ -173,7 +173,7 @@ export default function Countries() {
                 </span>
               </button>
             </div>
-            <div className="dropdown-menu" role="menu">
+            <div className="dropdown-menu left-0 right-auto md:left-auto md:right-0" role="menu">
               <div className="dropdown-content">
                 {availableCountriesListItem}
               </div>
