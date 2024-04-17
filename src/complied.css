@@ -973,6 +973,11 @@ video {
   }
   .dropdown-menu {
     .dropdown-content {
+      a {
+        text-decoration-line: none;
+      }
+    }
+    .dropdown-content {
       display: flex;
     }
     .dropdown-content {

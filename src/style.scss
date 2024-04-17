@@ -76,6 +76,10 @@
       z-10;
     
       .dropdown-content {
+        a {
+          @apply
+            no-underline;
+        }
         @apply
           flex
           flex-col
