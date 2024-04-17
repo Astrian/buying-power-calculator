@@ -8,6 +8,10 @@
 }
 
 .tab {
+  a {
+    @apply
+      no-underline;
+  }
   @apply 
     flex
     gap-1
@@ -125,4 +129,13 @@
 }
 .all-countries-modal.is-active {
   @apply flex;
+}
+
+a {
+  @apply
+    underline
+    decoration-sky-200
+    decoration-8
+    hover:decoration-sky-400
+    underline-offset-[-4px];
 }

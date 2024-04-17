@@ -620,29 +620,14 @@ video {
   margin: 0.5rem;
 }
 
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.mx-2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mt-4 {
@@ -721,6 +706,10 @@ video {
 
 .gap-2 {
   gap: 0.5rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
 }
 
 .gap-4 {
@@ -859,6 +848,9 @@ video {
 }
 
 .tab {
+  a {
+    text-decoration-line: none;
+  }
   display: flex;
   cursor: default;
   -webkit-user-select: none;
@@ -1066,6 +1058,17 @@ video {
 
 .all-countries-modal.is-active {
   display: flex;
+}
+
+a {
+  text-decoration-line: underline;
+  text-decoration-color: #bae6fd;
+  text-decoration-thickness: 8px;
+  text-underline-offset: -4px;
+}
+
+a:hover {
+  text-decoration-color: #38bdf8;
 }
 
 .hover\:bg-slate-200:hover {
