@@ -2,12 +2,120 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  @apply
+    font-global;
+}
+
 .tab {
-  @apply flex gap-2 cursor-default bg-gray-200 p-1 rounded-[8px] shadow-inner select-none;
+  @apply 
+    flex
+    gap-1
+    cursor-default
+    bg-gray-200 
+    p-1 
+    rounded-[8px] 
+    shadow-inner select-none;
   li {
-    @apply text-lg px-[10px] py-[5px] rounded-[6px];
+    @apply 
+      text-lg 
+      px-4
+      py-2 
+      rounded-[6px];
+    &:hover {
+      @apply 
+        bg-gray-300;
+    }
   }
   .is-active{
-    @apply bg-white shadow-sm;
+    @apply 
+      bg-white 
+      shadow-sm;
+    &:hover {
+      @apply 
+        bg-white;
+    }
   }
+}
+
+.button {
+  @apply
+    flex
+    bg-white
+    px-4
+    py-2
+    border-solid
+    border-gray-200
+    border-[1px]
+    rounded-[4px]
+    select-none
+    cursor-pointer
+    active:shadow-inner
+    active:bg-slate-100;
+}
+.dropdown {
+  @apply
+    relative;
+  .dropdown-menu {
+    @apply 
+      absolute
+      border-gray-200
+      border-solid
+      border-[1px]
+      shadow-md
+      min-w-72
+      mt-2
+      bg-white
+      rounded-[4px]
+      right-0
+      hidden
+      z-10;
+    
+      .dropdown-content {
+        @apply
+          flex
+          flex-col
+          max-h-96
+          overflow-y-scroll;
+          .dropdown-item {
+            @apply
+              px-4
+              py-2;
+            &:hover {
+              @apply
+                bg-gray-100;
+            }
+          }
+      }
+  }
+}
+
+.dropdown.is-active {
+  .button {
+    @apply
+    bg-slate-100
+      shadow-inner;
+  }
+  .dropdown-menu {
+    @apply
+      block;
+  }
+}
+
+.input {
+  @apply
+    w-full
+    bg-white
+    outline-none
+    rounded-[4px]
+    border-solid border-[1px] border-gray-200
+    shadow-inner
+    px-3
+    py-2
+    focus:border-sky-600
+    focus:shadow-sky-600/20;
+    &::-webkit-inner-spin-button {
+      @apply
+        appearance-none;
+    }
 }

@@ -14,18 +14,20 @@ function App() {
   return (
     <>
     <div className="container mx-auto px-[16px]">
-      <div className="flex justify-between mt-6">
+      <div className="flex md:justify-between items-center mt-6 flex-col md:flex-row">
         <h1 className="text-3xl font-bold">{t('website_title')}</h1>
-        <ul className="tab">
+        <ul className="tab mt-4 md:mt-0">
           <li className={feature === 'time' ? 'is-active' : ''} onClick={() => setFeature('time')}><a>{t('feature_time')}</a></li>
           <li className={feature === 'country' ? 'is-active' : ''} onClick={() => setFeature('country')}><a>{t('feature_country')}</a></li>
         </ul>
       </div>
+
+      <hr className="mt-4 md:hidden" />
       
       {feature === 'time' && <Inflation />}
       {feature === 'country' && <Countries />}
     
-      <div className="footer-part">
+      <div className="text-center mt-8">
         <Trans i18nKey="footer">
           <a className="styled" href="https://data.worldbank.org/" target="_blank">World Bank</a>
           <a className="styled" href="https://astrian.moe" target="_blank">blog link</a>
