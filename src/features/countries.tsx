@@ -124,9 +124,9 @@ export default function Countries() {
   })
 
   return (
-    <div className="feature-body">
-      <div className="pref">
-        <div className="pref-item">
+    <div className="feature-body mt-8">
+      <div className="flex flex-col md:flex-row justify-center md:items-center gap-4 md:gap-8 mb-4">
+        <div className="flex items-center gap-2">
           <span className="icon-text">
             <span className="icon">
               <Icon path={mdiCalendarClock} size={1} />
@@ -148,7 +148,7 @@ export default function Countries() {
             </div>
           </div>
         </div>
-        <div className="pref-item">
+        <div className="flex items-center gap-2">
           <span className="icon">
             <Icon path={mdiEarth} size={1} />
           </span>
@@ -157,14 +157,14 @@ export default function Countries() {
             <span>{t('show_all_countries')}</span>
           </label>
         </div>
-        <div className="pref-item">
+        <div className="flex items-center gap-2">
           <span className="icon">
             <Icon path={mdiCashEdit} size={1} />
           </span>
           
           <div className={cn("dropdown", showCountryDropdown && "is-active")} onClick={() => setShowCountryDropdown(!showCountryDropdown)}>
             <div className="dropdown-trigger">
-              <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
+              <button className="button w-fit whitespace-nowrap" aria-haspopup="true" aria-controls="dropdown-menu">
                 <span>
                   {t(`country_${selectedCountry}`)}
                 </span>
@@ -184,8 +184,8 @@ export default function Countries() {
         </div>
       </div>
 
-      <div className="maincontent">
-        <table className="table">
+      <div className="flex justify-center items-center">
+        <table>
           <thead>
             <tr>
               <th>{t("table_country_name")}</th>

@@ -630,6 +630,10 @@ video {
   margin-right: auto;
 }
 
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -664,6 +668,11 @@ video {
 
 .max-h-96 {
   max-height: 24rem;
+}
+
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .w-full {
@@ -722,6 +731,10 @@ video {
 
 .overflow-scroll {
   overflow: scroll;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
 }
 
 .rounded-md {
@@ -921,6 +934,11 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.button:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
+
 .button:active {
   --tw-bg-opacity: 1;
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
@@ -1010,6 +1028,10 @@ video {
 
 .dropdown.is-active {
   .button {
+    --tw-border-opacity: 1;
+    border-color: rgb(156 163 175 / var(--tw-border-opacity));
+  }
+  .button {
     --tw-bg-opacity: 1;
     background-color: rgb(241 245 249 / var(--tw-bg-opacity));
   }
@@ -1076,6 +1098,47 @@ a:hover {
   text-decoration-color: #38bdf8;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-width: 1px;
+  border-style: solid;
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+  thead {
+    border-radius: 0.375rem;
+  }
+  th, td {
+    border-width: 1px;
+  }
+  th, td {
+    border-style: solid;
+  }
+  th, td {
+    --tw-border-opacity: 1;
+    border-color: rgb(229 231 235 / var(--tw-border-opacity));
+  }
+  th, td {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  th, td {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  th {
+    --tw-bg-opacity: 1;
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  }
+  tr:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  }
+  .is-active {
+    font-weight: 600;
+  }
+}
+
 .hover\:bg-slate-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
@@ -1103,7 +1166,15 @@ a:hover {
     flex-direction: row;
   }
 
+  .md\:items-center {
+    align-items: center;
+  }
+
   .md\:justify-between {
     justify-content: space-between;
+  }
+
+  .md\:gap-8 {
+    gap: 2rem;
   }
 }
