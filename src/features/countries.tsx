@@ -152,7 +152,7 @@ export default function Countries() {
           <span className="icon">
             <Icon path={mdiEarth} size={1} />
           </span>
-          <label className="checkbox">
+          <label className="flex gap-1">
             <input type="checkbox" onChange={e => setShowAllCountries(e.target.checked)} />
             <span>{t('show_all_countries')}</span>
           </label>
