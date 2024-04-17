@@ -119,3 +119,10 @@
         appearance-none;
     }
 }
+
+.all-countries-modal {
+  @apply hidden;
+}
+.all-countries-modal.is-active {
+  @apply flex;
+}
