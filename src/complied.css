@@ -612,6 +612,10 @@ video {
   top: 0px;
 }
 
+.right-auto {
+  right: auto;
+}
+
 .z-20 {
   z-index: 20;
 }
@@ -1292,6 +1296,14 @@ table {
 }
 
 @media (min-width: 768px) {
+  .md\:left-auto {
+    left: auto;
+  }
+
+  .md\:right-0 {
+    right: 0px;
+  }
+
   .md\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
