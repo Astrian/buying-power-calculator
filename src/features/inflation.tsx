@@ -4,7 +4,6 @@ import cpi from "../cpi.json";
 import Icon from "@mdi/react";
 import { mdiMenuDown, mdiCash } from "@mdi/js";
 import cn from "classnames";
-import "./inflation.scss";
 
 function Inflation() {
   const { t } = useTranslation();
@@ -169,7 +168,7 @@ function Inflation() {
     return (
       <div
         key={country}
-        className="item"
+        className="m-2 p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md cursor-pointer select-none"
         onClick={() => {
           currentCountryProcessor(country);
           setShowAllCountries(false);
@@ -250,24 +249,17 @@ function Inflation() {
 
   return (
     <>
-      <div className="feature-body">
-        <div className="country-selector">
-          <span className="icon-text">
-            <span className="icon">
-              <Icon path={mdiCash} size={1} />
-            </span>{" "}
-            <span className="region-label">{t("select_country_label")}</span>
-          </span>
+      <div className="flex flex-col mt-8">
+        <div className="flex justify-center items-center gap-2">
+          <div className="flex gap-1">
+            <Icon path={mdiCash} size={1} />
+            <span className="region-label hidden md:block">{t("select_country_label")}</span>
+          </div>
           <div
             className={cn("dropdown is-right", dropdownActive && "is-active")}
             onClick={dropdownHandler}
           >
-            <div className="dropdown-trigger">
-              <button
-                className="button"
-                aria-haspopup="true"
-                aria-controls="dropdown-menu"
-              >
+            <div className="button">
                 <span>
                   {t(`country_${currentCounty}`)} -{" "}
                   {t(`currency_${currentCounty}`)}
@@ -275,9 +267,9 @@ function Inflation() {
                 <span className="icon is-small">
                   <Icon path={mdiMenuDown} size={1} />
                 </span>
-              </button>
             </div>
-            <div className="dropdown-menu" role="menu">
+
+            <div className="dropdown-menu">
               <div className="dropdown-content">
                 {frequentCountriesItems}
                 <hr className="dropdown-divider" />
@@ -292,11 +284,11 @@ function Inflation() {
             </div>
           </div>
         </div>
-        <div className="calculator-body">
-          <div className="module from">
-            <div className="year">
+        <div className="flex flex-col md:flex-row mt-6 gap-2">
+          <div className="flex-1 bg-slate-200 p-[20px] gap-4 dark:bg-slate-800">
+            <div className="flex justify-between items-center">
               <strong>{t("year_from_title")}</strong>
-              <div className="selector">
+              <div className="flex items-center gap-2">
                 <span>{t("year")}</span>
                 <div
                   className={cn(
@@ -329,7 +321,7 @@ function Inflation() {
             </div>
             <input
               type="number"
-              className="input"
+              className="input text-[30px] mt-6 px-5 py-4 font-number"
               step="0.01"
               placeholder={t("from_input_placeholder")}
               value={fromAmount}
@@ -339,10 +331,10 @@ function Inflation() {
             />
           </div>
 
-          <div className="module to">
-            <div className="year">
+          <div className="flex-1 bg-slate-200 p-[20px] gap-4 dark:bg-slate-800">
+            <div className="flex justify-between items-center">
               <strong>{t("year_to_title")}</strong>
-              <div className="selector">
+              <div className="flex items-center gap-2">
                 <span>{t("year")}</span>
                 <div
                   className={cn(
@@ -374,24 +366,24 @@ function Inflation() {
                 </div>
               </div>
             </div>
-            <div className="input">
-              <span>{toAmount}</span>
-              <span className="readonly-tag">{t("readonly")}</span>
+            <div className="input text-[30px] mt-6 px-5 py-4 flex justify-between items-center">
+              <span className="font-number">{toAmount}</span>
+              <span className="text-sm text-slate-400">{t("readonly")}</span>
             </div>
           </div>
         </div>
 
-        <div className="share">
+        <div className="flex items-center justify-center mt-6">
           <button className="button" onClick={share}>
             {t("share")}
           </button>
         </div>
       </div>
 
-      <div className={cn("modal", showAllCountries && "is-active")}>
-        <div className="modal-background"></div>
-        <div className="modal-card">
-          <header className="modal-card-head">
+      <div className={`fixed top-0 left-0 w-full h-full flex-col items-center justify-center overflow-hidden all-countries-modal ${showAllCountries ? `is-active` : ''}`}>
+        <div className="bg-slate-600/50 dark:bg-zinc-900/80 absolute top-0 left-0 right-0 bottom-0" onClick={() => setShowAllCountries(false)} />
+        <div className="flex rounded-md flex-col z-20 border-[1px] border-solid border-gray-200 dark:border-slate-600 mx-4 md:mx-0">
+          <header className="rounded-tl-md rounded-tr-md flex items-center h-12 pl-4 bg-slate-100 dark:bg-slate-800 border-b-[1px] border-b-solid border-b-gray-200 dark:border-b-slate-600">
             <p className="modal-card-title">{t("show_all_countries")}</p>
             <button
               className="delete"
@@ -399,7 +391,7 @@ function Inflation() {
               onClick={() => setShowAllCountries(false)}
             ></button>
           </header>
-          <section className="modal-card-body">
+          <section className="modal-card-body max-h-96 overflow-scroll bg-white dark:bg-zinc-900 rounded-bl-md rounded-br-md">
             <div className="country-list">{countryItems}</div>
           </section>
         </div>

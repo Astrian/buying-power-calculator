@@ -1,176 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
-  font-family: "runda", "source-han-sans-cjk-sc", sans-serif;
+  @apply
+    font-global
+    dark:text-gray-200;
 }
 
-a.styled {
-  color: hsl(0, 0%, 29%);
-  --tw-shadow: inset 0 -.4em 0 0 #95cce8;
-  --tw-shadow-colored: inset 0 -.1em 0 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+body {
+  @apply
+    dark:bg-zinc-900;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-
-  button {
-    font-family: "runda", "source-han-sans-cjk-sc", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+.tab {
+  a {
+    @apply
+      no-underline;
   }
-
-  h1, h2, h3, h4, h5, h6, strong {
-    font-family: "runda", "source-han-sans-cjk-sc", sans-serif;
-    font-weight: 700;
-    font-style: normal; 
-  }
-
-  .header {
-    display: flex;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-part {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 14px;
-    margin-top: 40px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-}
-
-.module {
-  background-color: #f5f5f5;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-.country-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  .item {
-    display: flex;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-}
-
-.dropdown-content {
-  max-height: 360px;
-  overflow: scroll;
-  a.dropdown-item {
-    --tw-shadow: none;
-  }
-}
-
-/* phone layout */
-@media (max-width: 820px) {
-  .container {
-    padding: 18px;
-    .header {
-      flex-direction: column;
-      gap: 10px;
-      
+  @apply 
+    flex
+    gap-1
+    cursor-default
+    bg-gray-200 
+    p-1 
+    rounded-[8px] 
+    shadow-inner select-none
+    dark:bg-zinc-800;
+  li {
+    @apply 
+      text-lg 
+      px-4
+      py-2 
+      rounded-[6px];
+    &:hover {
+      @apply 
+        bg-gray-300
+        dark:bg-zinc-700;
     }
-    
+  }
+  .is-active{
+    @apply 
+      bg-white 
+      shadow-sm
+      dark:bg-zinc-900;
+    &:hover {
+      @apply 
+        bg-white
+        dark:bg-zinc-900;
+    }
   }
 }
 
-/* Dark scheme */
-@media (prefers-color-scheme: dark) {
-
-  a.dropdown-item:hover {
-    background-color: #ffffff1f;
-    color: #f5f5f5;
-  }
-
-  table.table {
-    background-color: transparent;
-    thead, tbody {
-      tr {
-        th, td {
-          color: #f5f5f5;
-          border-bottom: 1px solid #f5f5f5;
-        }
-      }
-    }
-    
-    
-  }
+.button {
+  @apply
+    flex
+    bg-white
+    dark:bg-zinc-800
+    px-4
+    py-2
+    border-solid
+    border-gray-200
+    dark:border-slate-600
+    border-[1px]
+    rounded-[4px]
+    select-none
+    cursor-pointer
+    active:shadow-inner
+    active:bg-slate-100
+    dark:active:bg-zinc-700
+    hover:border-gray-400;
+}
+.dropdown {
+  @apply
+    relative;
   
-  a.styled {
-    --tw-shadow: inset 0 -.4em 0 0 #3f4d54;
-  }
-  .tabs {
-    ul {
-      li {
-        a:hover {
-          color: #f5f5f5;
-          border-bottom: 1px solid #f5f5f5;
+  .dropdown-menu {
+    @apply 
+      absolute
+      border-gray-200
+      dark:border-slate-600
+      border-solid
+      border-[1px]
+      shadow-md
+      dark:shadow-black/40
+      min-w-72
+      mt-2
+      bg-white
+      dark:bg-zinc-800
+      rounded-[4px]
+      right-0
+      hidden
+      z-10;
+    
+      .dropdown-content {
+        a {
+          @apply
+            no-underline;
         }
-      }
-      li.is-active{
-        a:hover {
-          color: hsl(229, 53%, 53%);
-          border-bottom: 1px solid hsl(229, 53%, 53%);
-        }
-      }
-    }
-  }
-  html {
-    background-color: #121212;
-    .container {
-      color: #f5f5f5;
-      * {
-        color: #f5f5f5;
-      }
-      .input, .button, .dropdown-content  {
-        background-color: #393939;
-        border: 1px solid #7d7d7d;
-        hr.dropdown-divider {
-          background-color: #7d7d7d;
-        }
-      }
-      .button:hover, .button:focus {
-        color: #f5f5f5;
-      }
-
-      .module {
-        background-color: #1f1f1f;
-      }
-    }
-    .modal {
-      .modal-card {
-        .modal-card-head {
-          .modal-card-title {
-            color: #f5f5f5;
-            
-          }
-          background-color: #393939;
-          border-bottom: 1px solid #7d7d7d;
-        }
-        .modal-card-body {
-          background-color: #1f1f1f;
-          .country-list {
-            .item {
-              color: #f5f5f5;
-              &:hover {
-                background-color: #ffffff21;
-              }
+        @apply
+          flex
+          flex-col
+          max-h-96
+          overflow-y-scroll;
+          .dropdown-item {
+            @apply
+              px-4
+              py-2;
+            &:hover {
+              @apply
+                bg-gray-100
+                dark:bg-zinc-700;
             }
           }
-        }
+          hr{
+            @apply
+              border-t
+              dark:border-slate-600;
+          }
       }
+      
+  }
+}
+
+.dropdown.is-active {
+  .button {
+    @apply
+      bg-slate-100
+      dark:bg-zinc-700
+      shadow-inner
+      border-gray-400;
+  }
+  .dropdown-menu {
+    @apply
+      block;
+  }
+}
+
+.input {
+  @apply
+    w-full
+    bg-white
+    dark:bg-zinc-800
+    outline-none
+    rounded-[4px]
+    border-solid border-[1px]
+    border-gray-200 dark:border-slate-600
+    shadow-inner dark:shadow-black/40
+    px-3
+    py-2
+    focus:border-sky-600
+    focus:shadow-sky-600/20;
+    &::-webkit-inner-spin-button {
+      @apply
+        appearance-none;
     }
+}
+
+.all-countries-modal {
+  @apply hidden;
+}
+.all-countries-modal.is-active {
+  @apply flex;
+}
+
+a {
+  @apply
+    underline
+    decoration-sky-200
+    dark:decoration-sky-800
+    decoration-8
+    hover:decoration-sky-400
+    dark:hover:decoration-sky-600
+    underline-offset-[-4px];
+}
+
+table {
+  @apply
+    w-full
+    border-collapse
+    border-solid
+    border-gray-200
+    dark:border-slate-600
+    border-[1px];
+  thead {
+    @apply rounded-md;
+  }
+  th, td {
+    @apply
+      border-solid
+      border-gray-200
+      dark:border-slate-600
+      border-[1px]
+      px-4
+      py-2;
+  }
+  th {
+    @apply
+      bg-gray-100
+      dark:bg-zinc-800;
+  }
+  tr {
+    @apply
+      hover:bg-gray-100
+      dark:hover:bg-zinc-700;
+  }
+  .is-active {
+    @apply
+    font-semibold;
   }
 }
