@@ -4,7 +4,13 @@
 
 * {
   @apply
-    font-global;
+    font-global
+    dark:text-gray-200;
+}
+
+body {
+  @apply
+    dark:bg-zinc-900;
 }
 
 .tab {
@@ -19,7 +25,8 @@
     bg-gray-200 
     p-1 
     rounded-[8px] 
-    shadow-inner select-none;
+    shadow-inner select-none
+    dark:bg-zinc-800;
   li {
     @apply 
       text-lg 
@@ -28,16 +35,19 @@
       rounded-[6px];
     &:hover {
       @apply 
-        bg-gray-300;
+        bg-gray-300
+        dark:bg-zinc-700;
     }
   }
   .is-active{
     @apply 
       bg-white 
-      shadow-sm;
+      shadow-sm
+      dark:bg-zinc-900;
     &:hover {
       @apply 
-        bg-white;
+        bg-white
+        dark:bg-zinc-900;
     }
   }
 }
@@ -46,31 +56,38 @@
   @apply
     flex
     bg-white
+    dark:bg-zinc-800
     px-4
     py-2
     border-solid
     border-gray-200
+    dark:border-slate-600
     border-[1px]
     rounded-[4px]
     select-none
     cursor-pointer
     active:shadow-inner
     active:bg-slate-100
+    dark:active:bg-zinc-700
     hover:border-gray-400;
 }
 .dropdown {
   @apply
     relative;
+  
   .dropdown-menu {
     @apply 
       absolute
       border-gray-200
+      dark:border-slate-600
       border-solid
       border-[1px]
       shadow-md
+      dark:shadow-black/40
       min-w-72
       mt-2
       bg-white
+      dark:bg-zinc-800
       rounded-[4px]
       right-0
       hidden
@@ -92,17 +109,25 @@
               py-2;
             &:hover {
               @apply
-                bg-gray-100;
+                bg-gray-100
+                dark:bg-zinc-700;
             }
           }
+          hr{
+            @apply
+              border-t
+              dark:border-slate-600;
+          }
       }
+      
   }
 }
 
 .dropdown.is-active {
   .button {
     @apply
-    bg-slate-100
+      bg-slate-100
+      dark:bg-zinc-700
       shadow-inner
       border-gray-400;
   }
@@ -116,10 +141,12 @@
   @apply
     w-full
     bg-white
+    dark:bg-zinc-800
     outline-none
     rounded-[4px]
-    border-solid border-[1px] border-gray-200
-    shadow-inner
+    border-solid border-[1px]
+    border-gray-200 dark:border-slate-600
+    shadow-inner dark:shadow-black/40
     px-3
     py-2
     focus:border-sky-600
@@ -141,8 +168,10 @@ a {
   @apply
     underline
     decoration-sky-200
+    dark:decoration-sky-800
     decoration-8
     hover:decoration-sky-400
+    dark:hover:decoration-sky-600
     underline-offset-[-4px];
 }
 
@@ -152,6 +181,7 @@ table {
     border-collapse
     border-solid
     border-gray-200
+    dark:border-slate-600
     border-[1px];
   thead {
     @apply rounded-md;
@@ -160,17 +190,20 @@ table {
     @apply
       border-solid
       border-gray-200
+      dark:border-slate-600
       border-[1px]
       px-4
       py-2;
   }
   th {
     @apply
-      bg-gray-100;
+      bg-gray-100
+      dark:bg-zinc-800;
   }
   tr {
     @apply
-      hover:bg-gray-100;
+      hover:bg-gray-100
+      dark:hover:bg-zinc-700;
   }
   .is-active {
     @apply

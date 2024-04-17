@@ -168,7 +168,7 @@ function Inflation() {
     return (
       <div
         key={country}
-        className="m-2 p-2 hover:bg-slate-200 rounded-md cursor-pointer select-none"
+        className="m-2 p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md cursor-pointer select-none"
         onClick={() => {
           currentCountryProcessor(country);
           setShowAllCountries(false);
@@ -285,7 +285,7 @@ function Inflation() {
           </div>
         </div>
         <div className="flex flex-col md:flex-row mt-6 gap-2">
-          <div className="flex-1 bg-slate-200 p-[20px] gap-4">
+          <div className="flex-1 bg-slate-200 p-[20px] gap-4 dark:bg-slate-800">
             <div className="flex justify-between items-center">
               <strong>{t("year_from_title")}</strong>
               <div className="flex items-center gap-2">
@@ -331,7 +331,7 @@ function Inflation() {
             />
           </div>
 
-          <div className="flex-1 bg-slate-200 p-[20px] gap-4">
+          <div className="flex-1 bg-slate-200 p-[20px] gap-4 dark:bg-slate-800">
             <div className="flex justify-between items-center">
               <strong>{t("year_to_title")}</strong>
               <div className="flex items-center gap-2">
@@ -381,9 +381,9 @@ function Inflation() {
       </div>
 
       <div className={`fixed top-0 left-0 w-full h-full flex-col items-center justify-center overflow-hidden all-countries-modal ${showAllCountries ? `is-active` : ''}`}>
-        <div className="bg-slate-600/50 absolute top-0 left-0 right-0 bottom-0" onClick={() => setShowAllCountries(false)} />
-        <div className="flex rounded-md flex-col z-20 border-[1px] border-solid border-gray-200 mx-4 md:mx-0">
-          <header className="rounded-tl-md rounded-tr-md flex items-center h-12 pl-4 bg-slate-100 border-b-[1px] border-b-solid border-b-gray-200">
+        <div className="bg-slate-600/50 dark:bg-zinc-900/80 absolute top-0 left-0 right-0 bottom-0" onClick={() => setShowAllCountries(false)} />
+        <div className="flex rounded-md flex-col z-20 border-[1px] border-solid border-gray-200 dark:border-slate-600 mx-4 md:mx-0">
+          <header className="rounded-tl-md rounded-tr-md flex items-center h-12 pl-4 bg-slate-100 dark:bg-slate-800 border-b-[1px] border-b-solid border-b-gray-200 dark:border-b-slate-600">
             <p className="modal-card-title">{t("show_all_countries")}</p>
             <button
               className="delete"
@@ -391,7 +391,7 @@ function Inflation() {
               onClick={() => setShowAllCountries(false)}
             ></button>
           </header>
-          <section className="modal-card-body max-h-96 overflow-scroll bg-white rounded-bl-md rounded-br-md">
+          <section className="modal-card-body max-h-96 overflow-scroll bg-white dark:bg-zinc-900 rounded-bl-md rounded-br-md">
             <div className="country-list">{countryItems}</div>
           </section>
         </div>
